@@ -3,15 +3,15 @@
 <p>
   <strong>Name:</strong>
   <%= @track.name %>
-  <%= @track.track_file.url %>
+
 </p>
 <audio controls="controls">
   <source src="<%= @track.track_file.url %>" />    
   </audio>
 
   <p>
-    <strong>User:</strong>
-    <%= @track.user_id %>
+    <strong>Artist:</strong>
+    <%= @track.user.try :email %>
   </p>
 
   <p>

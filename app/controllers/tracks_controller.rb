@@ -9,8 +9,8 @@ class TracksController < ApplicationController
 
   def show
     respond_with(@track)
-    commentable = Track.find(1)
-    comments = commentable.comments.recent.limit(10).all
+    # commentable = Track.find()
+    # comments = commentable.comments.recent.limit(10).all
   end
 
   def new

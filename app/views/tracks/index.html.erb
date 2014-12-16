@@ -13,19 +13,22 @@
 
   <tbody>
     <% @tracks.each do |track| %>
-      <tr>
-        <td><%= track.name %></td>
-        <td><%= track.user_id %></td>
-        <td><%= track.album_id %></td>
-        <td><%= track.image %></td>
+    <tr>
+      <td><%= track.name %></td>
+      <td><%= track.user_id %></td>
+      <td><%= track.album_id %></td>
+      <td><%= track.image %></td>
+      <audio controls="controls">
+        <source src="<%= track.track_file.url %>" />    
+        </audio>
         <td><%= link_to 'Show', track %></td>
         <td><%= link_to 'Edit', edit_track_path(track) %></td>
         <td><%= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Track', new_track_path %>
+  <%= link_to 'New Track', new_track_path %>
