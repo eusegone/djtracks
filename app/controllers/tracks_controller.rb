@@ -9,6 +9,8 @@ class TracksController < ApplicationController
 
   def show
     respond_with(@track)
+    commentable = Track.find(1)
+    comments = commentable.comments.recent.limit(10).all
   end
 
   def new
@@ -23,6 +25,11 @@ class TracksController < ApplicationController
     @track = Track.new(track_params)
     @track.save
     respond_with(@track)
+    commentable = Track.create
+    comment = commentable.comments.create
+    comment.title = "First comment."
+    comment.comment = "This is the first comment."
+    comment.save
   end
 
   def update

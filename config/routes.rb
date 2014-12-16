@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  # get 'user/role:string'
+
+  # get 'user/name:string'
+
   root 'home#index'
 
   resources :albums
