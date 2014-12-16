@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'cancancan'
 gem 'acts_as_commentable'
+gem 'carrierwave', '0.9.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
