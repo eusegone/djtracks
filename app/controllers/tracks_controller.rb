@@ -21,7 +21,6 @@ class TracksController < ApplicationController
   end
 
   def create
-    @track = Track.new(track_params)
     @track = current_user.tracks.new(track_params)
     @track.save
     respond_with(@track)
