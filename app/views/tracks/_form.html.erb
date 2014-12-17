@@ -28,8 +28,8 @@
     <%= f.collection_select(:album_id, Album.all, :id, :name) %>
   </div>
   <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_area :image %>
+    <%= f.label :track_image %><br />
+    <%= f.file_field :track_image %>
   </div>
   <div class="actions">
     <%= f.submit %>
