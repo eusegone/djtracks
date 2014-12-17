@@ -24,6 +24,19 @@
     <%= image_tag @track.track_image, alt:"Alt text is really required", width: 400 %>
   </p>
 
+  <hr>
+    <% @track.comments.each do |comment| %>
+    <%= comment.comment %>
+    <br>
+    <%= comment.user.try :email %>
+    <hr>
+    <% end %>
+
+    <%= form_for [@track, @track.comments.new] do |f| %>
+    <%= render partial: 'comments/form', locals: { f: f } %>
+    <%= f.submit 'Add Comment!' %>
+    <% end %>
+
 
 
 

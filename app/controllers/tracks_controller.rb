@@ -1,6 +1,5 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-
   respond_to :html
 
   def index
@@ -23,13 +22,9 @@ class TracksController < ApplicationController
 
   def create
     @track = Track.new(track_params)
+    @track = current_user.tracks.new(track_params)
     @track.save
     respond_with(@track)
-    commentable = Track.create
-    comment = commentable.comments.create
-    comment.title = "First comment."
-    comment.comment = "This is the first comment."
-    comment.save
   end
 
   def update
