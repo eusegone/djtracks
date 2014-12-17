@@ -19,14 +19,16 @@
       <%= f.label :track_file %><br />
       <%= f.file_field :track_file %>
   </div>
-<!--   <div class="field">
-    <%#= f.label :album_id %><br>
-    <%#= f.collection_select(:album_id, Album.all, :id, :name) %>
-  </div> -->
+
   <div class="field">
     <%= f.label :track_image %><br />
     <%= f.file_field :track_image %>
   </div>
+  <div class="field">
+    <% Album.all.each do |album| %>
+    <%= check_box_tag "track[album_ids][]", album.id, @track.albums.include?(album), id: "track_album_ids_#{album.id}" %>
+    <%= f.label :album_ids, album.name, for: "track_album_ids_#{album.id}" %>
+    <% end %>
   <div class="actions">
     <%= f.submit class: "button" %>
   </div>

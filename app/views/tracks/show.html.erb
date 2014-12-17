@@ -16,12 +16,12 @@
 
   <p>
     <strong>Album:</strong>
-    <%= @track.album_id %>
+    <%= @track.try :album_id %>
   </p>
 
   <p>
     <strong>Image:</strong>
-    <%= image_tag @track.track_image, alt:"Alt text is really required", width: 400 %>
+    <%= image_tag @track.track_image, alt:"Alt text is really required", width: 100 %>
   </p>
 
   <hr>

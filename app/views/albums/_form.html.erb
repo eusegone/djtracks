@@ -1,29 +1,31 @@
 <%= form_for(@album) do |f| %>
-  <% if @album.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
+<% if @album.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
 
-      <ul>
-      <% @album.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <ul>
+    <% @album.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :album_image %><br>
+  <%= f.file_field :album_image %>
+</div>
+<div class="field">
+  <% Track.all.each do |track| %>
+  <%= check_box_tag "album[track_ids][]", track.id, @album.tracks.include?(track), id: "album_track_ids_#{track.id}" %>
+  <%= f.label :track_ids, track.name, for: "album_track_ids_#{track.id}" %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_area :image %>
-  </div>
-  <div class="field">
-    <%= f.label :track_id %><br>
-    <%= f.number_field :track_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

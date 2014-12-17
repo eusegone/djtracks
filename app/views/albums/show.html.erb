@@ -7,12 +7,14 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @album.image %>
+  <%= image_tag @album.album_image, alt:"Alt text is really required", width: 100 %>
 </p>
 
 <p>
-  <strong>Track:</strong>
-  <%= @album.track_id %>
+  <strong>Tracks:</strong>
+  <% @album.tracks.each do |track| %>
+<%= track.name %>
+<% end %>
 </p>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
