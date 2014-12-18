@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   # get 'user/role:string'
 
   # get 'user/name:string'
+  authenticated :user do
+      root to: "users#show", as: :authenticated_root
+    end
 
-  root 'home#index'
+    unauthenticated do
+      root to: "home#index"
+    end
 
   resources :albums
   resources :tracks do
@@ -15,5 +20,6 @@ Rails.application.routes.draw do
     end  
   end
   devise_for :users
+  resources :users
 
 end

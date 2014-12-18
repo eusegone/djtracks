@@ -5,8 +5,18 @@ class Ability
     user ||= User.new
     if user.role? :admin
         can :manage, :all
+      elsif user.persisted?
+        can :read, Track
+        can :create, Track
+        can :destroy, Track, user_id: user.id
+        can :edit, Track, user_id: user.id
+
+        can :read, Album
+        can :create, Album
+        can :destroy, Album, user_id: user.id
+        can :edit, Album, user_id: user.id
     else
-        can :read, Recipe
+        can :read, :all
     end
-end
+  end
 end

@@ -16,8 +16,8 @@
       <td><%= image_tag track.track_image, width: 90 %></td>
       <td><%= link_to track.name, track %></td>
 
-        <td><%= link_to 'Edit', edit_track_path(track) %></td>
-        <td><%= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_track_path(track) if can? :edit, track %></td>
+        <td><%= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, track %></td>
       </tr>
       <% end %>
     </tbody>
