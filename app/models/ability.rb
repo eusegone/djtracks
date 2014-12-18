@@ -6,6 +6,7 @@ class Ability
     if user.role? :admin
         can :manage, :all
       elsif user.persisted?
+        can :read, User, id: user.id
         can :read, Track
         can :create, Track
         can :destroy, Track, user_id: user.id
