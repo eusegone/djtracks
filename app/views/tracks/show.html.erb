@@ -1,45 +1,38 @@
 <p id="notice"><%= notice %></p>
 <div class="small-6 large-centered columns">
-  <div>
-    <strong>Name:</strong>
-    <%= @track.name %>
-  </div>
+  <%= image_tag @track.track_image, alt:"Alt text is really required", class: "track-show" %>
 
-  <div class="small-6 large-centered columns">
-    <div>
-      <audio controls="controls">
-        <source src="<%= @track.track_file.url %>" />    
-        </audio>
+  <strong>Name:</strong>
+  <%= @track.name %>
 
-        <p>
-          <strong>Artist:</strong>
-          <%= @track.user.try :email %>
-        </p>
+  
+  <p>
+    <strong>Artist:</strong>
+    <%= @track.user.try :email %>
+  </p>
 
-        <p>
-          <strong>Album:</strong>
-          <%= @track.try :album_id %>
-        </p>
+  <p>
+    <strong>Album:</strong>
+    <%= @track.try :album_id %>
+  </p>
+  <audio controls="controls">
+    <source src="<%= @track.track_file.url %>" />    
+  </audio>
 
-        <p>
-          <strong>Image:</strong>
-          <%= image_tag @track.track_image, alt:"Alt text is really required", width: 100 %>
-        </p>
+    <hr>
+    <% @track.comments.approved.each do |comment| %>
+    <%= comment.comment %>
+    <br>
+    <%= comment.user.try :email %>
+    <hr>
+    <% end %>
 
-        <hr>
-        <% @track.comments.all.each do |comment| %>
-        <%= comment.comment %>
-        <br>
-        <%= comment.user.try :email %>
-        <hr>
-        <% end %>
+    <%= form_for [@track, Comment.new] do |f| %>
+    <%= render partial: 'comments/form', locals: { f: f } %>
+    <%= f.submit 'Add Comment!', class: "button expand" %>
+    <% end %>
+  
 
-        <%= form_for [@track, @track.comments.new] do |f| %>
-        <%= render partial: 'comments/form', locals: { f: f } %>
-        <%= f.submit 'Add Comment!' %>
-        <% end %>
-      </div>
-
-      <%= link_to 'Edit', edit_track_path(@track) %> |
-      <%= link_to 'Back', tracks_path %>
-    </div>
+  <%= link_to 'Edit', edit_track_path(@track) %> |
+  <%= link_to 'Back', tracks_path %>
+</div>

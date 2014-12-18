@@ -15,3 +15,19 @@
  *= require foundation_and_overrides
 
  */
+
+header {
+  background: #333333;
+}
+
+table, audio {
+  width: 100%;
+}
+
+.track-show {
+  width: 200px;
+  border-radius: 100%;
+  display: block;
+  margin: 20px auto;
+  border: 5px solid #333;
+}

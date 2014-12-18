@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # get 'user/role:string'
 
   # get 'user/name:string'
@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   resources :albums
   resources :tracks do
-    resources :comments 
+    resources :comments do
+      collection do
+        put :approve
+      end
+    end  
   end
   devise_for :users
 
