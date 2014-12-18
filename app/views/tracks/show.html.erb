@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 <div class="small-6 large-centered columns">
   <%= image_tag @track.track_image, alt:"Alt text is really required", class: "track-show" %>
-
-  <strong>Name:</strong>
+<p>
+  <h3>
   <%= @track.name %>
-
-  
+  </h3>
+</p>
   <p>
     <strong>Artist:</strong>
     <%= @track.user.try :email %>
@@ -13,7 +13,9 @@
 
   <p>
     <strong>Album:</strong>
-    <%= @track.try :album_id %>
+    <% @track.albums.each do |album| %>
+    <%= album.try :name %>
+    <% end %>
   </p>
   <audio controls="controls">
     <source src="<%= @track.track_file.url %>" />    

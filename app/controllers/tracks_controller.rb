@@ -8,8 +8,7 @@ class TracksController < ApplicationController
 
   def show
     respond_with(@track)
-    # commentable = Track.find()
-    # comments = commentable.comments.recent.limit(10).all
+    # @album = Album.find(@track.album_id)
   end
 
   def new

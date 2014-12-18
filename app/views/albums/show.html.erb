@@ -1,21 +1,24 @@
 <p id="notice"><%= notice %></p>
+<div class="small-6 large-centered columns">
 
 <p>
-  <strong>Name:</strong>
-  <%= @album.name %>
+  <%= image_tag @album.album_image, alt:"Alt text is really required", class: "track-show" %>
 </p>
-
 <p>
-  <strong>Image:</strong>
-  <%= image_tag @album.album_image, alt:"Alt text is really required", width: 100 %>
+<h3>
+  <%= @album.name %>
+</h3>
 </p>
 
 <p>
   <strong>Tracks:</strong>
   <% @album.tracks.each do |track| %>
-<%= track.name %>
+
+<%= link_to track.name,track_path(track) %><br>
 <% end %>
 </p>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
+
+</div>

@@ -3,21 +3,19 @@
 <table>
   <thead>
     <tr>
-      <th>Album Name</th>
       <th>Album Cover</th>
-      <th>Info</th>
-      <th colspan="4">
-      </th>
+      <th>Track </th>
+      <th>Edit </th>
+      <th>Destroy </th>
     </tr>
   </thead>
 
   <tbody>
     <% @tracks.each do |track| %>
     <tr>
-      <td><%= track.name %></td>
       <td><%= image_tag track.track_image, width: 90 %></td>
-      
-        <td><%= link_to 'Show', track %></td>
+      <td><%= link_to track.name, track %></td>
+
         <td><%= link_to 'Edit', edit_track_path(track) %></td>
         <td><%= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
