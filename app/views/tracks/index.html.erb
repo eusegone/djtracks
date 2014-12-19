@@ -18,6 +18,7 @@
 
         <td><%= link_to 'Edit', edit_track_path(track) if can? :edit, track %></td>
         <td><%= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, track %></td>
+        <td><%= link_to 'Approve comments', track_comments_path(track) %></td>
       </tr>
       <% end %>
     </tbody>

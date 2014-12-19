@@ -11,6 +11,8 @@ class Ability
         can :create, Track
         can :destroy, Track, user_id: user.id
         can :edit, Track, user_id: user.id
+        can :create, Comment
+        can :read, Comment
 
         can :read, Album
         can :create, Album

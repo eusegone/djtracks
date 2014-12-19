@@ -9,9 +9,13 @@ class CommentsController < ApplicationController
     redirect_to @track
   end
   def approve
-    Comment.update_all({status: "approved"}, {id: params[:comment_ids]})
-    redirect_to post_comments_path
+      Comment.where("id IN (?)", params[:comment_ids]).update_all(status: "approved")
+      redirect_to track_comments_path
   end
+  
+  def index
+      @track = Track.find(params[:track_id])
+    end
 
   def comment_params
     params.require(:comment).permit(:title, :comment, :status)

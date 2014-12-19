@@ -15,7 +15,7 @@
     <% @track.comments.draft.each do |comment| %>
     <tr>
       <td><%= check_box_tag "comment_ids[]", comment.id %></td>
-      <td><%= comment.creator %> </td>
+      <td><%= comment.user_id %> </td>
       <td><%= comment.comment %></td>
       <td><%= comment.status%></td>
       
@@ -37,7 +37,7 @@
     <% @track.comments.approved.each do |comment| %>
     <tr>
       <td><%= comment.id %></td>
-      <td><%= comment.creator %></td>
+      <td><%= comment.user_id %></td>
       <td><%= comment.comment %></td>
       <td><%= comment.status%></td>
       
